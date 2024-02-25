@@ -1,10 +1,33 @@
 {
-  "name": "AD Killer",
-  "version": "0.1",
-  "description": "Shows how to get geolocation access within a popup.",
-  "manifest_version": 3,
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "permissions": ["geolocation"]
+    "manifest_version": 3,
+    "name": "AD Killer",
+    "description": "It is a lightweight and fast ad blocking extension.",
+    "version": "0.0.1",
+    "icons": {
+        "16": "logo/logo-16.png",
+        "48": "logo/logo-48.png",
+        "128": "logo/logo-128.png"
+    },
+    "options_page": "settings/settings.html",
+    "action": {
+        "default_title": "AD Killer",
+        "default_popup": "popup/popup.html"
+    },
+    "permissions": [ "tabs", "webRequest", "storage", "alarms", "scripting", "declarativeNetRequest" ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "service-worker.js"
+    },
+    "content_scripts": [{
+        "js": ["foreground.js"],
+        "matches": [ "*://*/*" ],
+        "run_at": "document_start"
+    }],
+    "web_accessible_resources": [ {
+        "matches": [ "http://*/*", "https://*/*" ],
+        "resources": [ "web-accessible-resources/*" ],
+        "use_dynamic_url": true
+     } ]
 }
