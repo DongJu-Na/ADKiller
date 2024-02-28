@@ -1,5 +1,7 @@
 console.info("service-worker-utils.js load");
 
+chrome.declarativeNetRequest.setExtensionActionOptions({ displayActionCountAsBadgeText: true });
+
 (() => {
     const setStorage = data => new Promise(resolve => chrome.storage.local.set(data, resolve));
     const getStorage = keys => new Promise(resolve => chrome.storage.local.get(keys, resolve));
