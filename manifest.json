@@ -3,6 +3,7 @@
     "name": "AD Killer",
     "description": "It is a lightweight and fast ad blocking extension.",
     "version": "0.0.1",
+    "minimum_chrome_version": "104.0.0.0",
     "icons": {
         "16": "logo/logo-16.png",
         "48": "logo/logo-48.png",
@@ -25,9 +26,48 @@
         "matches": [ "*://*/*" ],
         "run_at": "document_start"
     }],
-    "web_accessible_resources": [ {
+    "web_accessible_resources": [{
         "matches": [ "http://*/*", "https://*/*" ],
         "resources": [ "web-accessible-resources/*" ],
         "use_dynamic_url": true
-     } ]
+     }],
+     "declarative_net_request": {
+        "rule_resources": [ {
+           "enabled": true,
+           "id": "ruleset_1",
+           "path": "rules/ruleset_1.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_2",
+           "path": "rules/ruleset_2.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_3",
+           "path": "rules/ruleset_3.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_6",
+           "path": "rules/ruleset_6.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_7",
+           "path": "rules/ruleset_7.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_8",
+           "path": "rules/ruleset_8.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_9",
+           "path": "rules/ruleset_9.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_13",
+           "path": "rules/ruleset_13.json"
+        }, {
+           "enabled": true,
+           "id": "ruleset_14",
+           "path": "rules/ruleset_14.json"
+        }]
+     }
 }
