@@ -3,6 +3,22 @@ const _ruleSet = ["ruleset_1","ruleset_2","ruleset_3","ruleset_6","ruleset_7","r
 
 chrome.declarativeNetRequest.setExtensionActionOptions({ displayActionCountAsBadgeText: true });
 
+function toggleRuleSets(bannerAdBlock) {
+    const addRuleIds = bannerAdBlock ? _ruleSet : [];
+    const removeRuleIds = bannerAdBlock ? [] : _ruleSet;
+
+    chrome.declarativeNetRequest.updateEnabledRulesets(
+        { enableRulesetIds: addRuleIds, disableRulesetIds: removeRuleIds },
+        function() {
+            if (chrome.runtime.lastError) {
+                console.error("룰셋 수정 에러 발생.", chrome.runtime.lastError.message);
+            } else {
+                console.info("룰셋 수정 완료.");
+            }
+        }
+    );
+}
+
 (() => {
     const setStorage = data => new Promise(resolve => chrome.storage.local.set(data, resolve));
     const getStorage = keys => new Promise(resolve => chrome.storage.local.get(keys, resolve));
@@ -33,39 +49,23 @@ chrome.declarativeNetRequest.setExtensionActionOptions({ displayActionCountAsBad
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message.type === 'bannerAdBlock') {
-            console.log('Received bannerAdBlock value:', message.value);
-
-            getAvailableStaticRuleCount()
-            .then(count => {
-                console.log("Available static rule count:", count);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-
-            getEnabledRulesets()
-            .then(rulesets => {
-                console.log("Enabled rulesets:", rulesets);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-
+            console.info('배너 플래그:', message.value);
             
+            toggleRuleSets(message.value);            
 
             setStorage({ bannerAdBlock: message.value })
-                .then(() => console.log('Banner Ad Block value saved'))
-                .catch(error => console.error('Error saving bannerAdBlock value:', error));
+                .then(() => console.log('배너 차단 값 저장 완료.'))
+                .catch(error => console.error('배너 차단 값 저장 중 오류 발생.:', error));
         } else if (message.type === 'videoAdBlock') {
-            console.log('Received videoAdBlock value:', message.value);
+            console.info('비디오 배너 플래그:', message.value);
 
             setStorage({ videoAdBlock: message.value })
-                .then(() => console.log('Video Ad Block value saved'))
-                .catch(error => console.error('Error saving videoAdBlock value:', error));
+                .then(() => console.log('비디오 배너 차단 값 저장 완료.'))
+                .catch(error => console.error('비디오 배너 차단 값 저장 중 오류 발생.:', error));
         }
 
         // 응답 전송
-        sendResponse('Message received successfully!');
+        sendResponse(sender,'메세지 수신 완료.');
     });
 
 })();
