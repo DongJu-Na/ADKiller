@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+html
+{
+    width: 500px; /* 최대 800px */
+    height: 600px; /* 최대 600px */
+    overflow-y: hidden;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+

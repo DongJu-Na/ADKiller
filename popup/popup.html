@@ -1,45 +1,90 @@
 <!doctype html>
 <head>
   <meta charset="UTF-8">
-<!-- bootStrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="popup.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="popup.css" rel="stylesheet"></link>
+  <script src="tailwindcss.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
   <title>AD Killer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+</style>
 </head>
-<body>
-  <div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <div class="row">
-          <div class="col">
-            <p class="text-start"><b>AD Killer</b></p>
-          </div>
-          <div class="col">
-            <p class="text-end"><i class="bi bi-question-circle"></i><i></i><i class="bi bi-gear"></i></p>
-          </div>
-        </div>
-      </li>
+<body class="bg-gray-100">
+  <div class="max-w-custom mx-auto">
+      <div class="text-center mt-6">
+          <h1 class="text-3xl font-bold">인터넷이 깨끗해집니다!</h1>
+          <p class="text-sm mt-2">오늘 하루 1,649개의 광고가 차단되었습니다.<br>광고차단 카운트 시간 42분의 광고가 차단되었습니다.</p>
+      </div>
 
-      <li class="list-group-item">
-        광고 피로도가 높습니다.
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </li>
+      <div class="mt-6">
+          <div class="flex items-center justify-between px-4 py-2 bg-white rounded-lg shadow">
+              <span class="text-blue-500"><i class="fas fa-envelope"></i></span>
+              <span>배너광고 차단</span>
+              <input type="checkbox" class="toggle-checkbox sr-only" id="banner-toggle" checked>
+              <label for="banner-toggle" class="text-blue-500 cursor-pointer">
+                  <i class="fas fa-toggle-on"></i>
+              </label>
+          </div>
+          <div class="flex items-center justify-between px-4 py-2 mt-2 bg-white rounded-lg shadow">
+              <span class="text-blue-500"><i class="fas fa-video"></i></span>
+              <span>영상광고 차단</span>
+              <input type="checkbox" class="toggle-checkbox sr-only" id="video-toggle" checked>
+              <label for="video-toggle" class="text-blue-500 cursor-pointer">
+                  <i class="fas fa-toggle-on"></i>
+              </label>
+          </div>
+          <div class="flex items-center justify-between px-4 py-2 mt-2 bg-white rounded-lg shadow">
+              <span class="text-gray-400"><i class="fas fa-search"></i></span>
+              <span>검색광고 차단</span>
+              <input type="checkbox" class="toggle-checkbox sr-only" id="search-toggle">
+              <label for="search-toggle" class="text-gray-400 cursor-pointer">
+                  <i class="fas fa-toggle-off"></i>
+              </label>
+          </div>
+      </div>
 
-      <li class="list-group-item">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="bannerAdBlock">
-            <label class="form-check-label" for="bannerAdBlock">배너광고 차단</label>
+      <div class="mt-6">
+          <div class="flex items-center justify-between px-4 py-2 bg-white rounded-lg shadow">
+              <div>
+                  <p class="text-sm">이 웹사이트의 광고를 차단합니다.</p>
+                  <p class="text-blue-500 text-xs mt-1">www.venturesquare.net</p>
+              </div>
+              <input type="checkbox" class="toggle-checkbox sr-only" id="website-toggle" checked>
+              <label for="website-toggle" class="text-blue-500 cursor-pointer">
+                  <i class="fas fa-toggle-on"></i>
+              </label>
           </div>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="videoAdBlock">
-            <label class="form-check-label" for="videoAdBlock">영상광고 차단</label>
+          <div class="flex items-center justify-between px-4 py-2 mt-2 bg-white rounded-lg shadow">
+              <div>
+                  <p class="text-sm">웹사이트 내 페이지의 광고를 차단합니다.</p>
+                  <p class="text-blue-500 text-xs mt-1">/category/pages/112233445566...</p>
+              </div>
+              <input type="checkbox" class="toggle-checkbox sr-only" id="page-toggle" checked>
+              <label for="page-toggle" class="text-blue-500 cursor-pointer">
+                  <i class="fas fa-toggle-on"></i>
+              </label>
           </div>
-      </li>
-      <li class="list-group-item">A third item</li>
-    </ul>
+          <div class="px-4 py-2 mt-2 bg-white rounded-lg shadow flex items-center justify-between">
+              <p class="text-sm">페이지에서 차단한 광고가 없습니다.</p>
+              <span class="text-red-500 text-xs font-bold">4</span>
+          </div>
+      </div>
+
+      <div class="mt-6 bg-blue-500 text-white text-center py-3 rounded-lg shadow">
+          <p class="text-sm">광고 차단 가리기</p>
+          <p class="text-xs mt-1">웹페이지 내 모든 광고를 클릭하여 차단할 수 있습니다.</p>
+      </div>
+
+      <div class="flex justify-between text-xs text-gray-500 mt-6 border-t border-gray-300 pt-3">
+          <span>대시보드</span>
+          <span>차단 리포트</span>
+          <span>설정</span>
+          <span>고객센터</span>
+      </div>
   </div>
 
   <script src="popup.js"></script>
