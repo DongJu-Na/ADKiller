@@ -1,2 +1,2 @@
 console.info("foreground.js load");
-chrome.runtime.sendMessage({hosturl:location.host})
+chrome.runtime.sendMessage({hosturl:location.host});
