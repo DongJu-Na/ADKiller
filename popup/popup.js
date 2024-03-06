@@ -1,3 +1,5 @@
+"use strict";
+
 (function () {
     console.info("popup.js load");
 
