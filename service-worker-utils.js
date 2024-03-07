@@ -19,6 +19,33 @@ function toggleRuleSets(bannerAdBlock) {
     );
 }
 
+function log(log, level = 'l', ...args) {
+    const prefix = 'AD Killer:'
+    const message = `${prefix} ${log}`;
+
+        switch (level) {
+            case 'e':
+            case 'err':
+            case 'error':
+                console.error(message, ...args);
+                break;
+            case 'l':
+            case 'log':
+                console.log(message, ...args);
+                break;
+            case 'w':
+            case 'warn':
+            case 'warning':
+                console.warn(message, ...args);
+                break;
+            case 'i':
+            case 'info':
+            default:
+                console.info(message, ...args);
+                break
+    }
+}
+
 (() => {
     const setStorage = data => new Promise(resolve => chrome.storage.local.set(data, resolve));
     const getStorage = keys => new Promise(resolve => chrome.storage.local.get(keys, resolve));
